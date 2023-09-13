@@ -1,0 +1,73 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-abbr-reader.ss" "lang")((modname Lutz-Evan-HW4) (read-case-sensitive #t) (teachpacks ((lib "image.rkt" "teachpack" "2htdp"))) (htdp-settings #(#t constructor repeating-decimal #f #t none #f ((lib "image.rkt" "teachpack" "2htdp")) #t)))
+;HW 4
+;ewlutz
+;Evan Lutz
+
+
+;1
+
+;Node contains:
+;ID
+;title
+;nameOfAdvisor
+;ListOfStudents
+;right Node
+;left Node
+
+
+;Student has a
+;name
+;email
+
+;Student is a (make-students (name emaik))
+;name -> STRING
+;email -> STRING
+
+(define-struct Student(name email))
+
+; Receipt is a ListOfStudents
+;Produce true if list includes all Students
+
+(define Ev(make-Student "Evan" "ewlutz@wpi.edu"))
+(define Marsh(make-Student "Ben" "brmarsh@wpi.edu"))
+(define KF(make-Student "Keira" "kmfolye@wpi.edu"))
+(define Ava(make-Student "Ava" "aclaughlin@wpi.edu"))
+
+(define Bros(cons Ev (cons Marsh empty)))
+(define Gals(cons KF (cons Ava empty)))
+
+
+;; a BST is one of
+;;   false
+;;   ProjectNode
+
+;; a ProjectNode is a (make-projectnode Number String String ListOfStudent BST BST)
+
+
+
+(define-struct coursenode (project-id title advisor students left right))
+;project-id -> FLOAT
+;title -> STRING
+;advisor -> STRING
+;students -> ListOfStudents
+;left -> Node
+;right -> Node
+
+(define Australia(make-coursenode 11 "CC & AU's costal citites" Bros 3 13))
+(define China(make-coursenode 15 "Polar Bears or nah" Gals 13 false))
+(define Dueschland(make-coursenode 3 "Polar Bears or nah" Gals 1 13))
+(define Switzerland(make-coursenode 7 "Nutrality" Bros 5 9))
+(define UK(make-coursenode 5 "Polar Bears or nah" Gals 3 7))
+
+
+;(recursive) template for functions on BinaryTrees:
+;#;(define (fcn-for-BinaryTree a-tree)
+;    (cond [(boolean? a-tree) (... )];base case
+;          [(person?  a-tree) (... (person-name a-tree)
+;                                  (person-year a-tree)
+;                                  (person-eyes a-tree)
+;                                  (fcn-for BinaryTree (person-mother a-tree))
+;                                  (fcn-for BinaryTree (person-father a-tree)))]))
+
